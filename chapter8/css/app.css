@@ -1,0 +1,50 @@
+#sawtooth {
+  background-color: #336e91;
+}
+#sine {
+  background-color: #783d47;
+}
+#triangle {
+  background-color: #3b3040;
+}
+#square {
+  background-color: #b85635;
+}
+
+.osc-controls {
+  border-style: solid;
+  border-color: #bc6527;
+  border-width: 2px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+div {
+  padding: 20px;
+}
+
+#oscillator-list {
+  padding-left: 0px;
+}
+
+#oscillator-list li {
+  list-style-type: none;
+  color: white;
+}
+
+.application {
+  width: 550px;
+  margin: 0 auto;
+}
+
+p,
+span,
+li,
+input {
+  font-size: 1.5em;
+}
+
+body {
+  background-color: orange;
+  font-family: "Arial";
+}
