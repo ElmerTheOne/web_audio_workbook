@@ -8,9 +8,32 @@
 	</head>
 	<!--___________________________________________BEGIN APP-->
 	<body>
-		<input id="play-button" type="button" value="PLAY">
+		<div class="application">
+		<div>
+			<h1> Oscillator Generator </h1>
+		</div>
+		<h1> Creating an Interface </h1>
+		<p>In this chapter we will go over HTML and CSS</p>
+			<div class="osc-controls">
+				<form>
+					<input id ="on-off" type = "button" value="start">
+					<span>Click to start oscillator</span>
+					<p>Use slider to modify frequency</p>
+					<input type="range">
+				</form>
+			</div>
+			<div class="osc-controls">
+				<h2>Waveform</h2>
+				<ul id="oscillator-list">
+					<li id="sawtooth">sawtooth</li>
+					<li id="sine"> sine</li>
+					<li id="triangle">triangle</li>
+					<li id="square">square</li>
+				</ul>
+			</div>
+		</div>
 		<script src="js/app.js"></script>
-	<button onclick="myFunction()" >Use me to test you major loser</button>
+	<!-- <button onclick="myFunction()" >Use me to test you major loser</button> -->
 
 	</body>
 	<!--____________________________________________END APP-->
