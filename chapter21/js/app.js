@@ -19,7 +19,8 @@ function findFundamental(array) {
     var max_index = findMedian(array,index);
     console.log("The max is at " + max_index);
     console.log("The fundamental frequency is " + max_index*(44100/2048));
-
+    //TODO: Could we actually use the values contained in there?
+    //  Do we use the amplitude?
 }
 
 function findMedian(array, index) {
@@ -27,34 +28,51 @@ function findMedian(array, index) {
     var count = 0;
     var upper = 0;
     var lower = 0;
-    for (var i = 0; i < array.length; i++) {
-        if(array[i] > 0) {
+    console.log(array[20]);
+    // for (var i = 0; i < array.length; i++) {
+    //     if(array[i] > 0) {
+    //         total += (255 / array[i]) * i //    Using the percentage and being smart.
+    //
+    //         count += (255 / array[i]) * 1;
+    //     }
+    //
+    // }
+    //
+    var under,over;
+    var upoint, opoint;
+    for(var i = index; i < array.length; i++) {
+        if(array[i] == array[index]) {
             total += i;
             count++;
+        } else {
+            upper = i-1;
+            over =  (array[i] / 255)*1;
+            break;
         }
-
     }
-    // for(var i = index; i < array.length; i++) {
-    //     if(array[i] == array[index]) {
-    //         total += i;
-    //         count++;
-    //     } else {
-    //         upper = i-1;
-    //         break;
-    //     }
-    // }
-    //
-    // for(var i = index; i >=0; i--) {
-    //     if(array[i] == array[index]) {
-    //         total += i;
-    //         count++;
-    //
-    //     } else {
-    //         lower = i + 1;
-    //         break;
-    //     }
-    // }
-    return total/count;
+
+    for(var i = index; i >=0; i--) {
+        if(array[i] == array[index]) {
+            total += i;
+            count++;
+
+        } else {
+            lower = i + 1;
+
+            under =   (array[i] / 255)*1;
+            break;
+        }
+    }
+
+    if(upper + 2 <= array.length -1 && under -2 >= 0) {
+        over += array[upper+2] / 255;
+        under += array[upper-2] / 255;
+    }
+    console.log("Over: " + over);
+    console.log("Under: " + under);
+    var tmp =  over - under;
+    console.log("tmp" + tmp);
+    return (upper + lower) / 2 + tmp;
 
 
 
@@ -74,7 +92,7 @@ $(function() {
     var app = $(".app");
     var bars = undefined;
 
-    osc.frequency.value = 261.6;    //  Okidoki
+    osc.frequency.value = 440;    //  Okidoki
     osc.connect(analyzer);
     //analyzer.connect(audioContext.destination);
     osc.type = "sine";
